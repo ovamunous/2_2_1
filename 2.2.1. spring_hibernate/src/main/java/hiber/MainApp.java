@@ -15,17 +15,21 @@ public class MainApp {
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         UserService userService = context.getBean(UserService.class);
-
-        Car car = new Car("ChinessCar", 22222);
-        User user = new User("123", "Lastname4", "user4@mail.ru", car);
-        user.setFirstName("John");
-        userService.add(user);
+        Car car1 = new Car("BMW", 11111);
+        Car car2 = new Car("ChinessCar", 22222);
+        Car car3 = new Car("Lada", 33333);
+        User user1 = new User("John", "Lastname1", "user1@mail.ru", car1);
+        User user2 = new User("Bill", "Lastname2", "user2@mail.ru", car2);
+        User user3 = new User("Valera", "Lastname3", "user3@mail.ru", car3);
+        userService.add(user1);
+        userService.add(user2);
+        userService.add(user3);
         List<User> users = userService.listUsers();
-        for (User user1 : users) {
-            System.out.println(user1);
+        for (User user : users) {
+            System.out.println(user);
         }
         System.out.println(userService.findCar("ChinessCar", 22222));
-        userService.delete(user);
+        userService.delete(user1);
         context.close();
     }
 }
