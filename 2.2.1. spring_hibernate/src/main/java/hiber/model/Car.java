@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "cars")
+@Table(name = "cars")
 public class Car {
 
     public Car() {
@@ -20,6 +20,7 @@ public class Car {
         this.model = model;
         this.series = series;
     }
+
     @Id
     @GeneratedValue
     private int id;
@@ -41,9 +42,11 @@ public class Car {
     public void setModel(String model) {
         this.model = model;
     }
+
     public int getSeries() {
         return series;
     }
+
     public void setSeries(int series) {
         this.series = series;
     }
