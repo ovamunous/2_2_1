@@ -11,5 +11,4 @@ public interface UserDao {
 
     void delete(User user);
 
-    User findCar(String model, int series);
 }

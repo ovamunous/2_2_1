@@ -3,6 +3,7 @@ package hiber;
 import hiber.config.AppConfig;
 import hiber.model.Car;
 import hiber.model.User;
+import hiber.service.CarService;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,8 +14,8 @@ public class MainApp {
     public static void main(String[] args) throws SQLException {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
-
         UserService userService = context.getBean(UserService.class);
+        CarService carService = context.getBean(CarService.class);
         Car car1 = new Car("BMW", 11111);
         Car car2 = new Car("ChinessCar", 22222);
         Car car3 = new Car("Lada", 33333);
@@ -28,7 +29,7 @@ public class MainApp {
         for (User user : users) {
             System.out.println(user);
         }
-        System.out.println(userService.findCar("ChinessCar", 22222));
+        System.out.println(carService.getUserByCar("Lada", 33333));
         userService.delete(user1);
         context.close();
     }
