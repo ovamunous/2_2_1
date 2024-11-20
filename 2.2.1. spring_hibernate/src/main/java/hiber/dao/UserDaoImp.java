@@ -12,13 +12,19 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    public CarDao carDao;
+
+    public UserDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+        this.carDao = new CarDaoImp(sessionFactory);
+    }
 
     @Override
     public void add(User user) {
-        sessionFactory.getCurrentSession().save(user.getCar());
         sessionFactory.getCurrentSession().save(user);
+        carDao.addCar(user.getCar());
     }
 
     @Override
@@ -31,6 +37,13 @@ public class UserDaoImp implements UserDao {
     @Override
     public void delete(User user) {
         sessionFactory.getCurrentSession().delete(user);
+    }
+
+    @Override
+    public User getUserByCar(String model, int series) {
+        return (User) sessionFactory.getCurrentSession()
+                .createQuery("from User t join fetch t.car where t.car.model = :model and t.car.series = :series")
+                .setParameter("model", model).setParameter("series", series).getSingleResult();
     }
 
 }

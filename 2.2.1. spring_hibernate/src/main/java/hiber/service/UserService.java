@@ -11,4 +11,5 @@ public interface UserService {
 
     void delete(User user);
 
+    public User getUserByCar(String model, int series);
 }

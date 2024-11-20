@@ -15,7 +15,6 @@ public class MainApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
-        CarService carService = context.getBean(CarService.class);
         Car car1 = new Car("BMW", 11111);
         Car car2 = new Car("ChinessCar", 22222);
         Car car3 = new Car("Lada", 33333);
@@ -29,7 +28,7 @@ public class MainApp {
         for (User user : users) {
             System.out.println(user);
         }
-        System.out.println(carService.getUserByCar("Lada", 33333));
+        System.out.println(userService.getUserByCar("Lada", 33333));
         userService.delete(user1);
         context.close();
     }

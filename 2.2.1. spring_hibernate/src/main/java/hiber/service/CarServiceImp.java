@@ -1,6 +1,7 @@
 package hiber.service;
 
 import hiber.dao.CarDao;
+import hiber.model.Car;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,9 @@ public class CarServiceImp implements CarService {
     @Autowired
     private CarDao carDao;
 
-    @Override
     @Transactional
-    public User getUserByCar(String model, int series) {
-        return carDao.getUserByCar(model, series);
+    @Override
+    public void addCar(Car car) {
+        carDao.addCar(car);
     }
 }

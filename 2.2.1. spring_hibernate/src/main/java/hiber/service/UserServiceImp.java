@@ -32,4 +32,10 @@ public class UserServiceImp implements UserService {
         userDao.delete(user);
     }
 
+    @Override
+    @Transactional
+    public User getUserByCar(String model, int series) {
+        return userDao.getUserByCar(model, series);
+    }
+
 }
