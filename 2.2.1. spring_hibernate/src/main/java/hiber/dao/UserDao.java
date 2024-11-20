@@ -11,6 +11,6 @@ public interface UserDao {
 
     void delete(User user);
 
-    public User getUserByCar(String model, int series);
+    User getUserByCar(String model, int series);
 
 }
